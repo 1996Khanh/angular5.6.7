@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../anguler.link/angular.min.js"></script>
+
+</head>
+<body>
+    <h2>Provider Demonstration</h2> <hr>
+    
+    <script>
+        var app = angular.module('app', []);
+        app.provider("myProvider", function() {
+            this.$get = function() {
+                return{
+                    Display: function() {
+                        return "Displaying Hello From the Service";
+                    },
+                };
+            };
+        });
+        // myProvider
+        app.controller("myController", function ($scope, myProvider) {
+            //provider function call
+            $scope.ProviderOutput = "Provider ouput";
+            $scope.DisplayProvider = function() {
+                $scope.flag = true;
+                $scope.ProviderOutput = myProvider.Display();
+            };
+        });
+    </script>
+
+    <div ng-app="app" ng-controller="myController">
+        <h3>Using Provider</h3>
+        <button ng-model="button" ng-click="DisplayProvider()" ng-disabled="flag">Display</button>
+        <div ng-bind="ProviderOutput"></div>
+    </div>
+</body>
+</html>

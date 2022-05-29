@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html ng-app="dynamictemp">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>document.write('<base href="' + document.location + '" />');</script>
+
+    <script src="bai 7.7.js"></script>
+    <script src="../anguler.link/angular.min.js"></script>
+</head>
+<body ng-controller="MainCtrl">
+    <select ng-model="model.loanType">
+        <option value="">Seclect Loan Type</option>
+        <option value="1">Personal Loan</option>
+        <option value="2">Housing Loan</option>
+    </select>
+        <loan-detail-form loan="model" /> <br><br>
+
+        <script type="text/ng-template" id="template1">
+            <form>
+                <br><br>
+                <fieldset>
+                    <legend>Personal Loan</legend>
+                    <label>Document needed:</label>
+                    <input type="text" ng-model="loan.attributeA">
+                </fieldset>
+            </form>
+        </script>
+    <!--Design the look as an enclosing box with elements inside-->
+    <script type="text/ng-template" id="template2">
+        <form>
+            <br><br>
+            <fieldset>
+                <legend>Housing Loan</legend>
+                <label>Document needed:</label>
+                <input type="text" ng-model="loan.attributeB" readonly><br>
+                <label>Document needed:</label>
+                <input type="text" ng-model="loan.attributeC" readonly><br>
+            </fieldset>
+        </form>
+    </script>
+</body>
+</html>

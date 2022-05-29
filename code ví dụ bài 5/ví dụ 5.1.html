@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../anguler.link/angular.min.js"></script>
+</head>
+<body ng-app="">
+    <p></p>
+    <form name="myForm">
+        <input type="text" name="myInput" ng-model="myInput" required>
+    </form>
+    <p class="error" ng-show="myForm.myInput.$invalid">
+        Hãy nhập thêm ký tự vào bàn phím
+    </p>
+    <h1>{{myForm.myInput.$valid}}</h1>
+    <script>
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../anguler.link/angular.min.js"></script>
+
+</head>
+<body ng-app>
+    <form name="myForm">
+        Email:<input type="email" name="input" ng-model="name" ng-minlength="20" required>
+        <br>
+        <br>
+        <span class="error" ng-show="myForm.input.$error.required">
+            BẠN CẦN NHẬP EMAIL</span><br>
+
+        <span class="error" ng-show="myForm.input.$error.email">
+            Bạn đang nhập email ko đúng </span><br>
+        Email Id = {{name}}<br><br>
+        myForm.input.$valid = {{myForm.input.$valid}}<br><br>
+        myForm.input.$error = {{myForm.input.$error}}<br><br>
+        myForm.$error.email = {{!!myForm.$error.email}}<br><br>
+    </form>
+</body>
+</html>

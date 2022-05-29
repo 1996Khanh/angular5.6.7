@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../anguler.link/angular.min.js"></script>
+</head>
+<body>
+    <div ng-app="mainApp" ng-controller="DemoController">
+        <p>Enter a nummber: <input type="number" ng-model="number"></p>
+        <button ng-click="cube1()">X<sup>3</sup></button>
+        <p>Result ( Using Factory): {{result1}}</p>
+        <button ng-click="cube2()">X<sup>3</sup></button>
+        <p>Result ( Using Factory): {{result2}}</p>
+        
+    </div>
+
+    <script>
+        var mainApp = angular.module("mainApp", []);
+        mainApp.factory('Math',function() {
+            var factoryObj = {};
+            factoryObj.multiply = function(a) {
+                return a*a*a;
+            }
+            return factoryObj;
+        });
+        mainApp.service('CalcService', function() {
+            this.cube = function(a) {
+                return a*a*a;
+            }
+        });
+        mainApp.controller('DemoController', function($scope,CalcService,Math) {
+            //Using Service
+            $scope.cube1 = function() {
+                $scope.result1 = CalcService.cube($scope.number);
+            }
+            // Using Factory
+            $scope.cube2 = function() {
+                $scope.result2 = Math.multiply($scope.number)
+            }
+        });
+    </script>
+</body>
+</html>

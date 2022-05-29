@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../anguler.link/angular.min.js"></script>
+
+</head>
+<body>
+    <div ng-app="mainApp" ng-controller="CalcController">
+        <p>Enter a number: <input type="number" ng-model="number"></p>
+        <button ng-click="square()">Square</sup></button>
+        <p>Result: {{result}} </p>
+    </div>
+    <script>
+        var mainApp = angular.module("mainApp", []);
+        mainApp.service('MyService', function() {
+            this.square = function(a) {
+                return a * a;
+            }
+        });
+
+        // Inject the created service into the controller
+        mainApp.controller('CalcController', function($scope, MyService) {
+            $scope.square = function() {
+                $scope.result = MyService.square($scope.number);
+            }
+        });
+    </script>
+</body>
+</html>

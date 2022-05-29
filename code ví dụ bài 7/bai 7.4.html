@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../anguler.link/angular.min.js"></script>
+
+</head>
+<body>
+    <div ng-app="mainApp" ng-controller="DemoController">
+        <p>Enter a number: <input type="number" ng-model="number"></p>
+        <button ng-click="square()">Square</button>
+        <p>Result: {{result}}</p>
+    </div>
+
+    <Script>
+        var mainApp = angular.module("mainApp", []);
+        mainApp.factory('MathService', function() {
+            //Define a factory
+            var factory = {};
+            // Assign a function to it
+            factory.square = function(a) {
+                return a * a;
+            }
+            return factory;
+        });
+        // Ịnect the service created using factory into the controller 
+        mainApp.controller('DemoController', function($scope, MathService) {
+            $scope.square = function() {
+                $scope.result = MathService.square($scope.number);
+            }
+        });
+    </Script>
+</body>
+</html>
